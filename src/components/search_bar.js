@@ -4,8 +4,11 @@ import React, { Component } from 'react';
 class SearchBar extends Component {
   // render method
   render() {
-    return <input />;
+    // event handler that will be trigered whenever the event will occur which is the change event in the input
+    return <input onChange={event => console.log(event.target.value)} />;
   }
+
+  
 }
 
 
