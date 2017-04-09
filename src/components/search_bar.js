@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-// declaring new componenet searchbar that contains just an input
-const SearchBar = () => {
-  return <input />;
+// define a new class called search bar and give it access to all its functionalities that react component class
+class SearchBar extends Component {
+  // render method
+  render() {
+    return <input />;
+  }
 }
 
 
