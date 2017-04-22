@@ -19,8 +19,6 @@ class App extends Component {
     });
   }
 
-app is the parent of video list and video list need to get access to the videos that are in the app state. So VideoList need a reference to the list of videos. Basically we need to pass some data from the parent component App into the child component VideoList. passing data from the parent component App to the child component VideoList we are passing the list of videos just by defining a property on the JSX tag.
-passing data like this is refered as passing props in React. The data that we are passing from App to VideoList (videos) is reffered to as a prop. So we are passing prop videos to VideoList. Anytime when App re render VideoList will get the videos as well. 
   render() {
     return (
       <div>
