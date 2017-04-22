@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
+import VideoList from './components/video_list';
 
 // importing that component of search bar
 import SearchBar from './components/search_bar';
@@ -8,26 +9,23 @@ import SearchBar from './components/search_bar';
 // API key that enable us to make a request to youtube
 const API_KEY = 'AIzaSyDlI8WdIrakp2rASGsj7dA7RWgHfg33Ht4';
 
-// whenever the app boots up we get a class of App the constructor will run right away and that will immediately kick off a search with the term surfboards. Then the callback function with data will be called with the list of videos.
-// the object that we are passing has a key of videos and the value is videos that is passed as an argument.
-// we can condesne this using ES6 when key and variable name are the same we can just use the value name which is videos in this case, for exmaple:
-// this.setState({ videos: videos }); is the same as: this.setState({ videos });
 // Create a new component. This component should produce some HTML.
 class App extends Component {
   constructor(props) {
     super(props)
-
     this.state = { videos: [] };
-
     YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
       this.setState({ videos });
     });
   }
 
+app is the parent of video list and video list need to get access to the videos that are in the app state. So VideoList need a reference to the list of videos. Basically we need to pass some data from the parent component App into the child component VideoList. passing data from the parent component App to the child component VideoList we are passing the list of videos just by defining a property on the JSX tag.
+passing data like this is refered as passing props in React. The data that we are passing from App to VideoList (videos) is reffered to as a prop. So we are passing prop videos to VideoList. Anytime when App re render VideoList will get the videos as well. 
   render() {
     return (
       <div>
         <SearchBar />
+        <VideoList videos={this.state.videos} />
       </div>
     )
   }
